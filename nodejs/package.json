@@ -1,6 +1,6 @@
 {
   "name": "mcf-ext-clearbox",
-  "version": "0.1.0-rc.1",
+  "version": "1.0.0",
   "description": "Pack/unpack codec for the ClearBox extension of a machine configuration file",
   "license": "MIT",
   "type": "module",
