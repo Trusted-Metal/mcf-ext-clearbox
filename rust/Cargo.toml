@@ -1,0 +1,14 @@
+[package]
+name = "mcf-ext-clearbox"
+version = "0.1.0-rc.1"
+edition = "2021"
+license = "MIT"
+description = "Pack/unpack codec for the ClearBox extension of a machine configuration file"
+repository = "https://github.com/Trusted-Metal/mcf-ext-clearbox"
+publish = false
+# Tests read ../fixtures, which is not part of the packaged crate.
+exclude = ["tests/"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["float_roundtrip"] }

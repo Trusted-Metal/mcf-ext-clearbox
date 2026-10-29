@@ -1,0 +1,558 @@
+{
+  "attrs": {
+    "Output_Path": {
+      "dtype": "utf8",
+      "value": "/recordings/"
+    },
+    "Software_Trigger_Delay": {
+      "dtype": "i32",
+      "value": 3000
+    }
+  },
+  "children": {
+    "Optical_Train_01": {
+      "attrs": {
+        "Actual_Timing_Offset": {
+          "dtype": "i32",
+          "value": -8
+        },
+        "Commanded_Timing_Offset": {
+          "dtype": "i32",
+          "value": 50
+        },
+        "Data_Port": {
+          "dtype": "i32",
+          "value": 5001
+        },
+        "Firmware_Version": {
+          "dtype": "utf8",
+          "value": "2.4.1"
+        },
+        "Ip_Address": {
+          "dtype": "utf8",
+          "value": "192.168.1.10"
+        },
+        "Manufacturer": {
+          "dtype": "utf8",
+          "value": ""
+        },
+        "Model": {
+          "dtype": "utf8",
+          "value": ""
+        },
+        "Serial_Number": {
+          "dtype": "utf8",
+          "value": "001"
+        },
+        "Server_Port": {
+          "dtype": "i32",
+          "value": 20101
+        }
+      },
+      "children": {
+        "Power_Characterization": {
+          "attrs": {
+            "Algorithm_Equation": {
+              "dtype": "utf8",
+              "value": "W = a*V + b"
+            },
+            "Algorithm_Type": {
+              "dtype": "utf8",
+              "value": "LINEAR"
+            },
+            "Input_Type": {
+              "dtype": "utf8",
+              "value": "0-10 V"
+            },
+            "Units_Derived_Quantity": {
+              "dtype": "utf8",
+              "value": "Watts"
+            }
+          },
+          "children": {},
+          "datasets": {},
+          "tables": {
+            "Characterization_Points": {
+              "attrs": {},
+              "columns": {
+                "input_value": [
+                  1.0,
+                  5.0,
+                  10.0
+                ],
+                "output_value": [
+                  158.0,
+                  588.0,
+                  1125.5
+                ]
+              },
+              "fields": [
+                {
+                  "dtype": "f64",
+                  "name": "input_value"
+                },
+                {
+                  "dtype": "f64",
+                  "name": "output_value"
+                }
+              ],
+              "rows": 3
+            },
+            "Derivation_Equation_Constants": {
+              "attrs": {},
+              "columns": {
+                "name": [
+                  "b",
+                  "a"
+                ],
+                "value": [
+                  50.5,
+                  107.5
+                ]
+              },
+              "fields": [
+                {
+                  "dtype": "utf8",
+                  "name": "name",
+                  "size": 64
+                },
+                {
+                  "dtype": "f64",
+                  "name": "value"
+                }
+              ],
+              "rows": 2
+            }
+          }
+        },
+        "Synchronous_Sensors": {
+          "attrs": {},
+          "children": {
+            "Oxygen Sensor": {
+              "attrs": {
+                "Algorithm_Equation": {
+                  "dtype": "utf8",
+                  "value": "log(ppm) = a*mA + b"
+                },
+                "Algorithm_Type": {
+                  "dtype": "utf8",
+                  "value": "Log-Linear"
+                },
+                "Calibration_Source": {
+                  "dtype": "utf8",
+                  "value": "Datasheet"
+                },
+                "Calibration_Verified": {
+                  "dtype": "i32",
+                  "value": 0
+                },
+                "Enabled": {
+                  "dtype": "i32",
+                  "value": 1
+                },
+                "Input_Type": {
+                  "dtype": "utf8",
+                  "value": "4-20 mA"
+                },
+                "Metadata": {
+                  "dtype": "utf8",
+                  "value": "Synchronous Sensor because Clearbox is responsible for recording. Clearbox takes data at 100KHz even though sample period of sensor is 5s."
+                },
+                "Port_ID": {
+                  "dtype": "i32",
+                  "value": 5
+                },
+                "Sample_Period": {
+                  "dtype": "f64",
+                  "value": 5.0
+                },
+                "Sensor_Manufacturer": {
+                  "dtype": "utf8",
+                  "value": "Industrial Physics"
+                },
+                "Sensor_Model": {
+                  "dtype": "utf8",
+                  "value": "ZR810"
+                },
+                "Sensor_Name": {
+                  "dtype": "utf8",
+                  "value": "ZR800 Oxygen Analyzer"
+                },
+                "Sensor_Output_Range_High": {
+                  "dtype": "f64",
+                  "value": 6.0
+                },
+                "Sensor_Output_Range_Low": {
+                  "dtype": "f64",
+                  "value": -1.0
+                },
+                "Sensor_Output_Space": {
+                  "dtype": "utf8",
+                  "value": "log10(ppm)"
+                },
+                "Sensor_Scope": {
+                  "dtype": "utf8",
+                  "value": "Global"
+                },
+                "Sensor_Type": {
+                  "dtype": "utf8",
+                  "value": "Oxygen Sensor"
+                },
+                "Units_Derived_Quantity": {
+                  "dtype": "utf8",
+                  "value": "ppm"
+                }
+              },
+              "children": {},
+              "datasets": {},
+              "tables": {
+                "Calibration_Points": {
+                  "attrs": {},
+                  "columns": {
+                    "input_value": [
+                      4.0,
+                      20.0
+                    ],
+                    "output_value": [
+                      -1.0,
+                      6.0
+                    ]
+                  },
+                  "fields": [
+                    {
+                      "dtype": "f64",
+                      "name": "input_value"
+                    },
+                    {
+                      "dtype": "f64",
+                      "name": "output_value"
+                    }
+                  ],
+                  "rows": 2
+                },
+                "Derivation_Equation_Constants": {
+                  "attrs": {},
+                  "columns": {
+                    "name": [
+                      "a",
+                      "b"
+                    ],
+                    "value": [
+                      0.4375,
+                      -2.75
+                    ]
+                  },
+                  "fields": [
+                    {
+                      "dtype": "utf8",
+                      "name": "name",
+                      "size": 64
+                    },
+                    {
+                      "dtype": "f64",
+                      "name": "value"
+                    }
+                  ],
+                  "rows": 2
+                }
+              }
+            }
+          },
+          "datasets": {}
+        }
+      },
+      "datasets": {
+        "Correction_Data": {
+          "attrs": {
+            "dimensions": {
+              "dtype": "utf8",
+              "value": "H,W,D"
+            },
+            "dtype": {
+              "dtype": "utf8",
+              "value": "float64"
+            },
+            "shape": {
+              "dtype": "utf8",
+              "value": "3x3x2"
+            }
+          },
+          "data": [
+            "NaN",
+            -2.5,
+            -2.0,
+            -1.5,
+            -1.0,
+            -0.5,
+            0.0,
+            "NaN",
+            1.0,
+            1.5,
+            2.0,
+            2.5,
+            3.0,
+            3.5,
+            "NaN",
+            4.5,
+            5.0,
+            5.5
+          ],
+          "dtype": "f64",
+          "shape": [
+            3,
+            3,
+            2
+          ]
+        },
+        "Inverse_Correction_Data": {
+          "attrs": {
+            "dimensions": {
+              "dtype": "utf8",
+              "value": "H,W,D"
+            },
+            "dtype": {
+              "dtype": "utf8",
+              "value": "float64"
+            },
+            "shape": {
+              "dtype": "utf8",
+              "value": "3x3x2"
+            }
+          },
+          "data": [
+            -2.875,
+            -2.375,
+            -1.875,
+            -1.375,
+            -0.875,
+            -0.375,
+            "NaN",
+            0.625,
+            1.125,
+            1.625,
+            2.125,
+            2.625,
+            3.125,
+            "NaN",
+            4.125,
+            4.625,
+            5.125,
+            5.625
+          ],
+          "dtype": "f64",
+          "shape": [
+            3,
+            3,
+            2
+          ]
+        }
+      }
+    },
+    "Optical_Train_02": {
+      "attrs": {
+        "Actual_Timing_Offset": {
+          "dtype": "i32",
+          "value": -8
+        },
+        "Commanded_Timing_Offset": {
+          "dtype": "i32",
+          "value": 50
+        },
+        "Data_Port": {
+          "dtype": "i32",
+          "value": 5001
+        },
+        "Firmware_Version": {
+          "dtype": "utf8",
+          "value": "2.4.1"
+        },
+        "Ip_Address": {
+          "dtype": "utf8",
+          "value": "192.168.1.11"
+        },
+        "Manufacturer": {
+          "dtype": "utf8",
+          "value": ""
+        },
+        "Model": {
+          "dtype": "utf8",
+          "value": ""
+        },
+        "Serial_Number": {
+          "dtype": "utf8",
+          "value": "002"
+        },
+        "Server_Port": {
+          "dtype": "i32",
+          "value": 20101
+        }
+      },
+      "children": {
+        "Power_Characterization": {
+          "attrs": {
+            "Algorithm_Equation": {
+              "dtype": "utf8",
+              "value": "W = c0 + c1*V + c2*V^2"
+            },
+            "Algorithm_Type": {
+              "dtype": "utf8",
+              "value": "POLYNOMIAL"
+            },
+            "Input_Type": {
+              "dtype": "utf8",
+              "value": "0-10 V"
+            },
+            "Units_Derived_Quantity": {
+              "dtype": "utf8",
+              "value": "Watts"
+            }
+          },
+          "children": {},
+          "datasets": {},
+          "tables": {
+            "Characterization_Points": {
+              "attrs": {},
+              "columns": {
+                "input_value": [
+                  1.0,
+                  5.0,
+                  10.0
+                ],
+                "output_value": [
+                  15.5,
+                  47.5,
+                  110.0
+                ]
+              },
+              "fields": [
+                {
+                  "dtype": "f64",
+                  "name": "input_value"
+                },
+                {
+                  "dtype": "f64",
+                  "name": "output_value"
+                }
+              ],
+              "rows": 3
+            },
+            "Derivation_Equation_Constants": {
+              "attrs": {},
+              "columns": {
+                "name": [
+                  "c0",
+                  "c1",
+                  "c2"
+                ],
+                "value": [
+                  10.0,
+                  5.0,
+                  0.5
+                ]
+              },
+              "fields": [
+                {
+                  "dtype": "utf8",
+                  "name": "name",
+                  "size": 64
+                },
+                {
+                  "dtype": "f64",
+                  "name": "value"
+                }
+              ],
+              "rows": 3
+            }
+          }
+        }
+      },
+      "datasets": {
+        "Correction_Data": {
+          "attrs": {
+            "dimensions": {
+              "dtype": "utf8",
+              "value": "H,W,D"
+            },
+            "dtype": {
+              "dtype": "utf8",
+              "value": "float64"
+            },
+            "shape": {
+              "dtype": "utf8",
+              "value": "3x3x2"
+            }
+          },
+          "data": [
+            -2.75,
+            -2.25,
+            -1.75,
+            -1.25,
+            -0.75,
+            "NaN",
+            0.25,
+            0.75,
+            1.25,
+            1.75,
+            2.25,
+            2.75,
+            "NaN",
+            3.75,
+            4.25,
+            4.75,
+            5.25,
+            5.75
+          ],
+          "dtype": "f64",
+          "shape": [
+            3,
+            3,
+            2
+          ]
+        },
+        "Inverse_Correction_Data": {
+          "attrs": {
+            "dimensions": {
+              "dtype": "utf8",
+              "value": "H,W,D"
+            },
+            "dtype": {
+              "dtype": "utf8",
+              "value": "float64"
+            },
+            "shape": {
+              "dtype": "utf8",
+              "value": "3x3x2"
+            }
+          },
+          "data": [
+            -2.625,
+            -2.125,
+            -1.625,
+            -1.125,
+            "NaN",
+            -0.125,
+            0.375,
+            0.875,
+            1.375,
+            1.875,
+            2.375,
+            "NaN",
+            3.375,
+            3.875,
+            4.375,
+            4.875,
+            5.375,
+            5.875
+          ],
+          "dtype": "f64",
+          "shape": [
+            3,
+            3,
+            2
+          ]
+        }
+      }
+    }
+  },
+  "datasets": {}
+}
