@@ -1,0 +1,14 @@
+[package]
+name = "mcf-ext-clearbox-core-integration"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+# Dev-only: not part of the published crate. Expects core checked out next to this repo
+# (../../../Machine_Config_Library); change the path to test another checkout.
+[dependencies]
+mcf-ext-clearbox = { path = "../../rust" }
+machine-config = { path = "../../../Machine_Config_Library/rust" }
+serde_json = { version = "1", features = ["float_roundtrip"] }
+
+[workspace]

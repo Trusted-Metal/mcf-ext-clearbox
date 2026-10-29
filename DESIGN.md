@@ -150,6 +150,15 @@ contract's tree JSON form, which is also how a host in another language hands tr
   the file's own File_Version, reads it back and compares it with core's round trip of the original
   tree (empty attributes ignored). All 37 real trees pass for both 1.0 and 1.1 files. Core is not a
   runtime dependency.
+- **Core integration suites.** With core checked out next to this repo, real reader/writer calls
+  and this codec run in one process, per language:
+  `MCF_CORE_DIR=<core> npm test -- core.integration` (Node, needs core's `nodejs/dist` built) and
+  `cargo test --manifest-path integration/core-rust/Cargo.toml` (Rust, needs HDF5 on the path).
+  They cover every core fixture that carries ClearBox, mock configs, editing a model and writing it
+  back, adding ClearBox to a file without one, trees the codec rejects (core must keep them
+  verbatim), and 1.0 <-> 1.1 conversion. Writing to File_Version 1.0 is lossy by design
+  (`Firmware_Version`, `Input_Type`, `Units_Derived_Quantity` and `Characterization_Points` have no
+  1.0 location); the tests assert that exact loss and nothing more.
 
 ## 7. Repository and release
 
