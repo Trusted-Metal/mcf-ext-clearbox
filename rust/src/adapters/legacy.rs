@@ -564,7 +564,10 @@ fn pack_unit(u: &ClearBoxUnit) -> Result<ExtensionTree> {
     a.insert("Model".into(), str_attr(u.model.as_deref()));
     // File_Version 1.1 always has the attribute; the 1.0 shape (a `legacy` group) never does.
     if u.firmware_version.is_some() || u.legacy.is_none() {
-        a.insert("Firmware_Version".into(), str_attr(u.firmware_version.as_deref()));
+        a.insert(
+            "Firmware_Version".into(),
+            str_attr(u.firmware_version.as_deref()),
+        );
     }
     if let Some(l) = &u.legacy {
         a.insert(
