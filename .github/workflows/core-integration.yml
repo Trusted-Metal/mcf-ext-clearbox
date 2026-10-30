@@ -11,6 +11,9 @@ on:
   push:
     branches: ["**"]
 
+permissions:
+  contents: read
+
 concurrency:
   group: core-integration-${{ github.ref }}
   cancel-in-progress: true
