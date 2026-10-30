@@ -158,7 +158,9 @@ contract's tree JSON form, which is also how a host in another language hands tr
   back, adding ClearBox to a file without one, trees the codec rejects (core must keep them
   verbatim), and 1.0 <-> 1.1 conversion. Writing to File_Version 1.0 is lossy by design
   (`Firmware_Version`, `Input_Type`, `Units_Derived_Quantity` and `Characterization_Points` have no
-  1.0 location); the tests assert that exact loss and nothing more.
+  1.0 location); the tests assert that exact loss and nothing more. CI runs both on ubuntu against
+  the public core repo (`.github/workflows/core-integration.yml`, ref from the `core_ref` dispatch
+  input, default `SD-1745`; switch the default to `main` once core merges).
 
 ## 7. Repository and release
 

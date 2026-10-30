@@ -1,0 +1,84 @@
+name: Core integration
+
+# Runs the codec against a real checkout of Machine_Config_Library (public). Change the default ref to
+# main once the ClearBox removal is merged there.
+on:
+  workflow_dispatch:
+    inputs:
+      core_ref:
+        description: Machine_Config_Library branch, tag or SHA
+        required: false
+        default: SD-1745
+  push:
+    branches: ["**"]
+
+concurrency:
+  group: core-integration-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CORE_REF: ${{ inputs.core_ref || 'SD-1745' }}
+
+jobs:
+  node:
+    name: Node (core ${{ inputs.core_ref || 'SD-1745' }})
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: Trusted-Metal/Machine_Config_Library
+          ref: ${{ env.CORE_REF }}
+          path: core
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: |
+            nodejs/package-lock.json
+            core/nodejs/package-lock.json
+
+      - name: Build core
+        run: npm ci && npm run build
+        working-directory: core/nodejs
+
+      - name: Install codec dependencies
+        run: npm ci
+        working-directory: nodejs
+
+      - name: Integration tests
+        run: npm test -- core.integration
+        working-directory: nodejs
+        env:
+          MCF_CORE_DIR: ${{ github.workspace }}/core
+
+  rust:
+    name: Rust (core ${{ inputs.core_ref || 'SD-1745' }})
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: Trusted-Metal/Machine_Config_Library
+          ref: ${{ env.CORE_REF }}
+          path: core
+
+      # The integration crate reaches core at ../../../Machine_Config_Library, a sibling of the repo root.
+      - name: Place core next to this repo
+        run: ln -s "$GITHUB_WORKSPACE/core" "$(dirname "$GITHUB_WORKSPACE")/Machine_Config_Library"
+
+      - name: Install HDF5
+        run: sudo apt-get update && sudo apt-get install -y libhdf5-dev
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: integration/core-rust
+
+      - name: Integration tests
+        run: cargo test
+        working-directory: integration/core-rust
