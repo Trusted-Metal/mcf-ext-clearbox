@@ -1,14 +1,13 @@
 name: Core integration
 
-# Runs the codec against a real checkout of Machine_Config_Library (public). Change the default ref to
-# main once the ClearBox removal is merged there.
+# Runs the codec against a real checkout of Machine_Config_Library (public); the default ref is its main.
 on:
   workflow_dispatch:
     inputs:
       core_ref:
         description: Machine_Config_Library branch, tag or SHA
         required: false
-        default: SD-1745
+        default: main
   push:
     branches: ["**"]
 
@@ -17,11 +16,11 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  CORE_REF: ${{ inputs.core_ref || 'SD-1745' }}
+  CORE_REF: ${{ inputs.core_ref || 'main' }}
 
 jobs:
   node:
-    name: Node (core ${{ inputs.core_ref || 'SD-1745' }})
+    name: Node (core ${{ inputs.core_ref || 'main' }})
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -55,7 +54,7 @@ jobs:
           MCF_CORE_DIR: ${{ github.workspace }}/core
 
   rust:
-    name: Rust (core ${{ inputs.core_ref || 'SD-1745' }})
+    name: Rust (core ${{ inputs.core_ref || 'main' }})
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
